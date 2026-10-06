@@ -27,10 +27,10 @@ function equivalentText(prices){
 }
 function equivalentHTML(prices){const text=equivalentText(prices);return `<span class="price-equivalent" data-gel-prices="${prices===null?'':prices}" ${text?'':'hidden'}>${text}</span>`;}
 function renderCurrency(){
- const t=currencyCopy[lang];document.getElementById('currency-label').textContent=t.label;
- document.querySelectorAll('[data-currency]').forEach(b=>{b.textContent=t[b.dataset.currency];b.setAttribute('aria-pressed',String(b.dataset.currency===displayCurrency));});
+ const t=currencyCopy[lang],symbols={USD:'$',EUR:'€',RUB:'₽'};document.getElementById('currency-label').textContent=t.label;
+ document.querySelectorAll('[data-currency]').forEach(b=>{b.textContent=symbols[b.dataset.currency];b.setAttribute('aria-label',t[b.dataset.currency]);b.setAttribute('aria-pressed',String(b.dataset.currency===displayCurrency));});
  const note=validRates(exchangeRates)?t.note+' '+t.date+' '+new Intl.DateTimeFormat(lang==='ru'?'ru-RU':lang==='ka'?'ka-GE':'en-US',{timeZone:'UTC'}).format(new Date(exchangeRates.date+'T00:00:00Z'))+'.':t.unavailable;
- document.getElementById('currency-note').textContent=note;
+ document.getElementById('currency-note').textContent=note;document.querySelector('.currency-picker').title=note;
  document.querySelectorAll('[data-gel-prices]').forEach(el=>{const text=el.dataset.gelPrices===''?'':equivalentText(el.dataset.gelPrices);el.textContent=text;el.hidden=!text;});
  // Recalculate only display text; retain quantities and GEL totals.
  const total=selections.reduce((sum,row)=>sum+(dishOptions(row.id)[row.option].price||0)*row.quantity,0);
