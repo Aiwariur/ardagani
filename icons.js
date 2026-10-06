@@ -1,5 +1,8 @@
 // Original small line drawings made for this menu; no icon package.
 const drawings={
+salads:'<path d="M4 17h24c0 7-5 11-12 11S4 24 4 17Z M9 28h14 M9 17c-3-5 1-10 7-11-1 4-2 8-7 11Z M16 17c0-5 4-9 10-9-1 4-4 8-10 9Z M16 6c0-2 1-3 3-4"/>',
+cold:'<path d="M5 21h22 M7 21a9 9 0 0 1 18 0 M16 12v-3 M12 9h8 M8 26h16 M13 16c1-2 5-2 6 0"/>',
+hot:'<path d="M6 15h20v5a7 7 0 0 1-7 7h-6a7 7 0 0 1-7-7v-5Z M4 15h24 M11 15v-3h10v3 M12 8c-2-2 2-3 0-5 M20 8c-2-2 2-3 0-5"/>',
 fish:'<path d="M5 16c5-8 14-8 20 0-6 8-15 8-20 0Z M25 16l5-6v12l-5-6 M11 11c-1 4-1 6 0 10 M16 9l3-4 3 5 M17 23l4 3 2-5"/><circle cx="8.5" cy="15" r=".8" fill="currentColor" stroke="none"/>',
 grill:'<path d="m6 27 19-19 M10 29 29 10 M5 19l8 8 M9 15l8 8 M13 11l8 8 M17 7l8 8 M21 3l8 8 M4 9c-3-3 3-3 0-6 M11 6c-3-3 3-3 0-6"/>',
 khinkali:'<path d="M16 7c-2 0-3 1-3 3C9 14 5 18 5 23c1 5 21 5 22 0 0-5-4-9-8-13 0-2-1-3-3-3Z M13 10l-3 12 M15 11l-1 13 M17 11l1 13 M19 10l3 12 M13 7l1-3h4l1 3"/>',

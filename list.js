@@ -14,13 +14,7 @@ const listCatalog=new Map();
 for(const c of categories) c[4].forEach((d,i)=>listCatalog.set(c[0]+':'+i,{dish:d,category:c[0]}));
 function canonicalListId(id){return id==='adjara:4'?'bakery:3':id;}
 function dishOptions(id){id=canonicalListId(id);const entry=listCatalog.get(id);if(!entry)return [];const prices=entry.dish[3]===null?[null]:entry.dish[3].split('/').map(p=>Math.round(Number(p.trim().replace(',','.'))*100));
- let labels=null;
- if(id==='fish:3'){prices.push(prices[0]);labels=[['В баже','In walnut sauce','ბაჟეში'],['В соусе из кориандра и уксуса','In coriander & vinegar sauce','ქინძმარში']];}
- if(id==='fish:0')labels=[['Жареная','Fried','შემწვარი'],['С грецкими орехами','With walnuts','ნიგვზით']];
- if(id==='wine:2')labels=[['Виноградная','Grape','ყურძნის'],['Дынная','Melon','ნესვის'],['Персиковая','Peach','ატმის'],['Медовая','Honey','თაფლის']];
- if(id==='wine:1')labels=['0,5','1'].map(v=>[v+' л',v.replace(',','.')+' L',v+' ლ']);
- if(id==='wine:11')labels=['0,2','0,35','0,5'].map(v=>[v+' л',v.replace(',','.')+' L',v+' ლ']);
- if(entry.category==='spirits'&&(prices.length>1||entry.dish[3]===null)){const volumes=entry.dish[0].split('·')[1].trim().replace(/\s*л$/,'').split('/').map(s=>s.trim());labels=volumes.map(v=>[v+' л',v.replace(',','.')+' L',v+' ლ']);if(entry.dish[3]===null){prices.splice(0,prices.length,...volumes.map(()=>null));}}
+ const labels=entry.dish[6]||null;
  return prices.map((price,index)=>({price,label:labels?.[index]||null,index}));}
 let selections=[];let listStorageFailed=false;let listMode='edit';let pendingDish=null;
 try{const raw=JSON.parse(localStorage.getItem('ardagani-my-list-v1')||'[]');if(Array.isArray(raw)){for(const row of raw){if(!row||typeof row.id!=='string')continue;const id=canonicalListId(row.id),options=dishOptions(id);if(!Number.isInteger(row.option)||!options[row.option]||!Number.isInteger(row.quantity)||row.quantity<1)continue;const found=selections.find(x=>x.id===id&&x.option===row.option);if(found)found.quantity=Math.min(999,found.quantity+row.quantity);else selections.push({id,option:row.option,quantity:Math.min(999,row.quantity)});}}}catch{}
