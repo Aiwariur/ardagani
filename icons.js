@@ -19,6 +19,7 @@ map:'<path d="M16 29S6 18 6 12a10 10 0 0 1 20 0c0 6-10 17-10 17Z"/><circle cx="1
 search:'<circle cx="13" cy="13" r="9"/><path d="m20 20 9 9"/>',
 photo:'<rect x="3" y="6" width="26" height="21" rx="3"/><path d="m4 23 8-9 6 6 4-4 6 8"/><circle cx="22" cy="11" r="2"/>',
 up:'<path d="M16 28V5 M7 14l9-9 9 9"/>',
+arrow:'<path d="M9 23 23 9 M12 9h11v11"/>',
 close:'<path d="m9 9 14 14 M23 9 9 23"/>',
 };
 drawings.soups=drawings.adjara;
